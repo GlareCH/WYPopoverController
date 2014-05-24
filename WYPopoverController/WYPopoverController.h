@@ -72,6 +72,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 
 @property (nonatomic, strong) UIColor *outerShadowColor         UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *outerStrokeColor         UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat outerLineWidth            UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger  outerShadowBlurRadius    UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGSize   outerShadowOffset        UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger  outerCornerRadius        UI_APPEARANCE_SELECTOR;
@@ -232,6 +233,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 
 @property (nonatomic, strong) UIColor *outerShadowColor;
 @property (nonatomic, strong) UIColor *outerStrokeColor;
+@property (nonatomic, assign) CGFloat outerLineWidth;
 @property (nonatomic, assign) NSUInteger  outerShadowBlurRadius;
 @property (nonatomic, assign) CGSize   outerShadowOffset;
 @property (nonatomic, assign) NSUInteger  outerCornerRadius;

@@ -419,6 +419,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
 
 @synthesize outerShadowColor;
 @synthesize outerStrokeColor;
+@synthesize outerLineWidth;
 @synthesize outerShadowBlurRadius;
 @synthesize outerShadowOffset;
 @synthesize outerCornerRadius;
@@ -453,6 +454,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
     
     result.tintColor = [UIColor colorWithRed:55./255. green:63./255. blue:71./255. alpha:1.0];
     result.outerStrokeColor = nil;
+    result.outerLineWidth = 1.f;
     result.innerStrokeColor = nil;
     result.fillTopColor = result.tintColor;
     result.fillBottomColor = [result.tintColor colorByDarken:0.4];
@@ -483,6 +485,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
     
     result.tintColor = [UIColor colorWithRed:244./255. green:244./255. blue:244./255. alpha:1.0];
     result.outerStrokeColor = [UIColor clearColor];
+    result.outerLineWidth = 1.f;
     result.innerStrokeColor = [UIColor clearColor];
     result.fillTopColor = nil;
     result.fillBottomColor = nil;
@@ -595,7 +598,7 @@ static char const * const UINavigationControllerEmbedInPopoverTagKey = "UINaviga
 }
 
 - (NSArray *)observableKeypaths {
-    return [NSArray arrayWithObjects:@"tintColor", @"outerStrokeColor", @"innerStrokeColor", @"fillTopColor", @"fillBottomColor", @"glossShadowColor", @"glossShadowOffset", @"glossShadowBlurRadius", @"borderWidth", @"arrowBase", @"arrowHeight", @"outerShadowColor", @"outerShadowBlurRadius", @"outerShadowOffset", @"outerCornerRadius", @"innerShadowColor", @"innerShadowBlurRadius", @"innerShadowOffset", @"innerCornerRadius", @"viewContentInsets", @"overlayColor", nil];
+    return [NSArray arrayWithObjects:@"tintColor", @"outerStrokeColor", @"outerLineWidth", @"innerStrokeColor", @"fillTopColor", @"fillBottomColor", @"glossShadowColor", @"glossShadowOffset", @"glossShadowBlurRadius", @"borderWidth", @"arrowBase", @"arrowHeight", @"outerShadowColor", @"outerShadowBlurRadius", @"outerShadowOffset", @"outerCornerRadius", @"innerShadowColor", @"innerShadowBlurRadius", @"innerShadowOffset", @"innerCornerRadius", @"viewContentInsets", @"overlayColor", nil];
 }
 
 @end
@@ -940,6 +943,7 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
 @synthesize arrowHeight;
 @synthesize outerShadowColor;
 @synthesize outerStrokeColor;
+@synthesize outerLineWidth;
 @synthesize outerShadowBlurRadius;
 @synthesize outerShadowOffset;
 @synthesize outerCornerRadius;
@@ -1374,7 +1378,7 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
         CGContextRestoreGState(context);
         
         [self.outerStrokeColor setStroke];
-        outerRectPath.lineWidth = 1;
+        outerRectPath.lineWidth = self.outerLineWidth;
         [outerRectPath stroke];
         
         //// Cleanup
@@ -1607,6 +1611,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
         WYPopoverBackgroundView *appearance = [WYPopoverBackgroundView appearance];
         appearance.tintColor = aTheme.tintColor;
         appearance.outerStrokeColor = aTheme.outerStrokeColor;
+        appearance.outerLineWidth = aTheme.outerLineWidth;
         appearance.innerStrokeColor = aTheme.innerStrokeColor;
         appearance.fillTopColor = aTheme.fillTopColor;
         appearance.fillBottomColor = aTheme.fillBottomColor;
@@ -1659,6 +1664,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
         WYPopoverBackgroundView *appearance = [WYPopoverBackgroundView appearance];
         theme.tintColor = appearance.tintColor;
         theme.outerStrokeColor = appearance.outerStrokeColor;
+        theme.outerLineWidth = appearance.outerLineWidth;
         theme.innerStrokeColor = appearance.innerStrokeColor;
         theme.fillTopColor = appearance.fillTopColor;
         theme.fillBottomColor = appearance.fillBottomColor;
@@ -1741,6 +1747,7 @@ static WYPopoverTheme *defaultTheme_ = nil;
     if (backgroundView != nil) {
         backgroundView.tintColor = theme.tintColor;
         backgroundView.outerStrokeColor = theme.outerStrokeColor;
+        backgroundView.outerLineWidth = theme.outerLineWidth;
         backgroundView.innerStrokeColor = theme.innerStrokeColor;
         backgroundView.fillTopColor = theme.fillTopColor;
         backgroundView.fillBottomColor = theme.fillBottomColor;
